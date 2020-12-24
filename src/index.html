@@ -7,7 +7,26 @@
 </head>
 <body>
   <h1>Quiz!</h1>
-  
-  <div class="app"></div>
+  <div id="container">
+    <div id="menu">
+  <div id="start">Быстрая игра!</div>
+      <div id="start">Выбор темы (платно)</div>		
+    </div>
+    <div id="quiz" style="display: none">
+      <div id="question"></div>
+      <div id="qImg"></div>
+      <div id="choices">
+        <div class="choice" id="A" onclick="checkAnswer('A')"></div>
+        <div class="choice" id="B" onclick="checkAnswer('B')"></div>
+        <div class="choice" id="C" onclick="checkAnswer('C')"></div>
+      </div>
+      <div id="timer">
+        <div id="counter"></div>
+        <div id="timeGauge"></div>
+      </div>
+      <div id="progress"></div>
+    </div>
+    <div id="fact" style="display: none"></div>
+  </div>
 </body>
 </html>
