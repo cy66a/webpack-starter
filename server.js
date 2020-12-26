@@ -4,12 +4,12 @@
  * PUT =>    input {title: 'string'} output {title: 'string', id: 1}
  * GET =>                            output [{title: 'string', id: 1}, ...]
  * DELETE => input {id: 1}           output [{title: 'string', id: 1}, ...]
- */
+ */ 
 let questions = [
   {
     id: 1,
-    question: 'Что такое html?',
-    imgSrc: 'img/html.png',
+    question: 'Что такое HTML?',
+    imgSrc: '/src/img/html.png',
     choiceA: 'Язык гипертекстовой разметки',
     choiceB: 'Язык программирования',
     choiceC: 'Каскадный язык стилей',
@@ -18,7 +18,7 @@ let questions = [
   {
     id: 2,
     question: 'Что такое CSS?',
-    imgSrc: 'img/css.png',
+    imgSrc: '/src/img/css.png',
     choiceA: 'Язык гипертекстовой разметки',
     choiceB: 'Каскадный язык стилей',
     choiceC: 'Язык програяммировани',
@@ -27,7 +27,7 @@ let questions = [
   {
     id: 3,
     question: 'Что такое JS?',
-    imgSrc: 'img/js.png',
+    imgSrc: '/src/img/js.png',
     choiceA: 'Язык гипертекстовой разметки',
     choiceB: 'Каскадный язык стилей',
     choiceC: 'Язык программирования',
@@ -43,7 +43,9 @@ let questions = [
     correct: 'C'
   },
 ];
+
 let questionId = 5;
+
 var express = require("express");
 var app = express();
 const jsonParser = express.json();

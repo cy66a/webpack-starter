@@ -1,13 +1,13 @@
 import '../styles/index.scss';
 
 if (process.env.NODE_ENV === 'development') {
-  require('../index.html');
+	require('../index.html');
 }
 
 console.log('webpack starterkit');
 
 ///структура данных
-let start = document.getElementById('start');
+let start = document.getElementById('menu__start');
 let quiz = document.getElementById('quiz');
 let question = document.getElementById('question');
 let qImg = document.getElementById('qImg');
@@ -24,9 +24,9 @@ let questionsPromise = fetch('http://localhost:3000/questions').then(res => {
 	return res.json();
 });
 
-questionsPromise.then (
+// Получение данных с сервера
+questionsPromise.then(
 	res => {
-		debugger;
 		questions = res;
 	},
 	err => {
@@ -35,7 +35,6 @@ questionsPromise.then (
 );
 
 const lastQuestion = questions.length - 1;
-console.log(lastQuestion);
 let runningQuestion = 0;
 
 function renderQuestion() {
@@ -80,92 +79,42 @@ function startQuiz() {
 	renderProgress();
 	renderQuestion();
 	renderCounter();
-
 	start.style.display = 'none';
 	menu.style.display = 'none';
 	quiz.style.display = 'block';
 }
 
+
 // Проверить ответ
 
-function checkAnswer(answer) {
-	if (answer === questions[runningQuestion].correct) {
-		container.style.background = "rgba(50, 255, 0, 0.1)";
-	} else {
-		container.style.background = "rgba(255, 0, 0, 0.1)";
+// function checkAnswer(answer) {
+// 	if (answer === questions[runningQuestion].correct) {
+// 	alert('Всё верно, молодец!');
+// 	answerIsCorrect();
+// 	} 
+// 	else { alert('Ты ошибся!')
+// 	}
+// 	if (runningQuestion < lastQuestion) {
+// 		runningQuestion++;
+// 		renderQuestion();
+// 	}
+
+// }
+
+// function answerIsCorrect (){
+// 	document.getElementById(runningQuestion).style.backgroundColor = "#0f0";
+// }
+
+// function answerIsWrong (){
+// 	document.getElementById(runningQuestion).style.backgroundColor = "#0f0";
+// }
+
+let choice = document.querySelector('.choice');
+choice.addEventListener('click', (event) => {
+	if (event.target.id === questions.[runningQuestion].correct) {
+		alert ('Молодец, ты победил!');
+	} 
+	else  {
+		alert ('Боюсь, ты ошибся!'); 
 	}
-}
-
-// function answerIsCorrect() {
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// версия 1
-
-// let questions = [
-//   {
-//     category: 'Охота и рыбалка',
-//     question: 'Карась или щука?',
-//     imgage: 'some image',
-// 		responses: [
-// 			{id: 'asd', text: 'str2', correct: false},
-// 			{id: 'sdf', text: 'str1', correct: true},
-// 			{id: 'wer', text: 'str3', correct: false},
-// 		]
-//   },
-//   {
-//     category: 'Фотография',
-//     question: 'Плёнка или цифра',
-//     imgage: 'some image',
-// 		responses: [
-// 			{id: 'asd', text: 'sertr2', correct: false},
-// 			{id: 'sdf', text: 'stref1', correct: true},
-// 			{id: 'wer', text: 'sewftr3', correct: false},
-// 		]
-//   },
-// ];
-
-
-// function getAllquestions() {
-//   return qustions.map(question => getQuestionHtml(question)).join('');
-// }
-
-// function getQuestionHtml(question) {
-//     return `<div class="qustion__container">
-//     <div class="question__title">${question.category}</div>     
-//   </div>`;
-// }
-
-// const app = document.querySelector('.app');
-
-// function render() {
-//   app.innerHTML = getQuestionHtml(questions[1]);
-// }
-
-// render();
+});
