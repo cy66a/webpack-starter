@@ -7,24 +7,12 @@ if (process.env.NODE_ENV === 'development') {
 console.log('webpack starterkit');
 
 ///структура данных
-let start = document.getElementById('menu__start');
-let quiz = document.getElementById('quiz');
-let question = document.getElementById('question');
-let qImg = document.getElementById('qImg');
-let choiceA = document.getElementById('A');
-let choiceC = document.getElementById('B');
-let choiceB = document.getElementById('C');
-let counter = document.getElementById('counter');
-let timeGauge = document.getElementById('timeGauge');
-let progress = document.getElementById('progress');
 
-let questions = [];
-
+// Работа с сервером
 let questionsPromise = fetch('http://localhost:3000/questions').then(res => {
 	return res.json();
 });
 
-// Получение данных с сервера
 questionsPromise.then(
 	res => {
 		questions = res;
@@ -34,16 +22,29 @@ questionsPromise.then(
 	}
 );
 
-const lastQuestion = questions.length - 1;
+let questions = [];
+let quiz = document.getElementById('quiz');
+let question = document.getElementById('question');
+let questionImage = document.getElementById('questionImage');
+let counter = document.getElementById('counter');
+let timeGauge = document.getElementById('timeGauge');
+let progress = document.getElementById('progress');
+let lastQuestion = questions.length - 1;
 let runningQuestion = 0;
 
 function renderQuestion() {
 	let q = questions[runningQuestion];
 	question.innerHTML = "<p>" + q.question + "</p>";
-	qImg.innerHTML = "<img src=" + q.imgSrc + ">";
+	questionImage.innerHTML = "<img src=" + q.imgSrc + ">";
+
+	let choiceA = document.getElementById('A');
 	choiceA.innerHTML = q.choiceA;
+	let choiceB = document.getElementById('B');
 	choiceB.innerHTML = q.choiceB;
+	let choiceC = document.getElementById('C');
 	choiceC.innerHTML = q.choiceC;
+
+	
 }
 
 function renderProgress() {
@@ -70,12 +71,16 @@ function renderCounter() {
 }
 
 // Начать игру
+let start = document.getElementById('menu__start');
+let topic = document.getElementById('menu__topic');
 
-start.addEventListener('click', startQuiz);
+function main() {
+	start.addEventListener('click', startQuiz);
+	topic.addEventListener('click', showTopics);
+}
 
 function startQuiz() {
 	let timer = setInterval(renderCounter, 1000);
-
 	renderProgress();
 	renderQuestion();
 	renderCounter();
@@ -84,7 +89,52 @@ function startQuiz() {
 	quiz.style.display = 'block';
 }
 
+function showTopics() {
+	container.innerHTML = `
+		<div class="topic__menu">
+			<button class="topic" id="HTML">HTML</button>
+			<button class="topic" id="CSS">CSS</button>
+			<button class="topic" id="JS">JS</button>
+		</div>
+		`;
+}
 
+let choice = document.querySelector('.choices');
+choices.addEventListener('click', (event) => {
+	if (event.target.id === questions[runningQuestion].correct) {
+		alert('Молодец, ты победил!');
+		fact();
+		runningQuestion++;
+		if (runningQuestion >= questions.length) {
+			alert('Вопросы закончились!');
+			let container = document.getElementById('container');
+			container.innerHTML = `<div class="final"></div>`;
+		} else {
+			renderQuestion();
+		}
+
+	} else {
+		alert('Боюсь, ты ошибся!');
+		runningQuestion++;
+		renderQuestion();
+	}
+});
+
+function fact() {
+	let container = document.getElementById('container');
+	container.innerHTML = `<div class="fact">Ты молодец! Здесь будет интересный факт</div>`;
+	// runningQuestion++;
+	// renderQuestion();
+	setTimeout(renderQuestion, 1000);
+}
+
+main();
+
+let facts = [
+	{ id:1,
+		fact: 'Язык гипертекстовой разметки HTML был разработан британским учёным Тимом Бернерсом-Ли приблизительно в 1986—1991 годах в стенах ЦЕРНа в Женеве в Швейцарии',
+	},
+];
 // Проверить ответ
 
 // function checkAnswer(answer) {
@@ -108,13 +158,3 @@ function startQuiz() {
 // function answerIsWrong (){
 // 	document.getElementById(runningQuestion).style.backgroundColor = "#0f0";
 // }
-
-let choice = document.querySelector('.choice');
-choice.addEventListener('click', (event) => {
-	if (event.target.id === questions.[runningQuestion].correct) {
-		alert ('Молодец, ты победил!');
-	} 
-	else  {
-		alert ('Боюсь, ты ошибся!'); 
-	}
-});

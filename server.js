@@ -8,6 +8,7 @@
 let questions = [
   {
     id: 1,
+    theme: 'HTML',
     question: 'Что такое HTML?',
     imgSrc: '/src/img/html.png',
     choiceA: 'Язык гипертекстовой разметки',
@@ -17,15 +18,27 @@ let questions = [
   },
   {
     id: 2,
+    theme: 'HTML',
+    question: 'Что такое HTML?',
+    imgSrc: '/src/img/html.png',
+    choiceA: 'Язык гипертекстовой разметки',
+    choiceB: 'Язык программирования',
+    choiceC: 'Каскадный язык стилей',
+    correct: 'A'
+  },
+  {
+    id: 3,
+    theme: 'CSS',
     question: 'Что такое CSS?',
     imgSrc: '/src/img/css.png',
     choiceA: 'Язык гипертекстовой разметки',
     choiceB: 'Каскадный язык стилей',
-    choiceC: 'Язык програяммировани',
-    correct: 'B'
+    choiceC: 'Язык програяммирования',
+    correct: 'B',
   },
   {
-    id: 3,
+    id: 4,
+    theme: 'JS',
     question: 'Что такое JS?',
     imgSrc: '/src/img/js.png',
     choiceA: 'Язык гипертекстовой разметки',
@@ -34,17 +47,17 @@ let questions = [
     correct: 'C'
   },
   {
-    id: 4,
+    id: 5,
     question: 'Что такое PHP?',
-    imgSrc: 'img/php.png',
+    imgSrc: '/src/img/php.png',
     choiceA: 'Язык гипертекстовой разметки',
-    choiceB: 'Язык',
+    choiceB: 'Язык жестов',
     choiceC: 'Язык программирования',
     correct: 'C'
   },
 ];
 
-let questionId = 5;
+let questionId = 6;
 
 var express = require("express");
 var app = express();

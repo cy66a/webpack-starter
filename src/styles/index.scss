@@ -12,6 +12,8 @@ body {
 #container {
   margin: 20px auto;
   background-color: rgb(255, 255, 255);
+  min-height: 400px;
+  min-width: 200px;
   max-width: 800px;
   border-radius: 5px;
   box-shadow: 0 0 10px -5px blue;
@@ -50,7 +52,7 @@ body {
     }
   }
 
-  &__theme {
+  &__topic {
     font-size: 1.5rem;
     font-weight: bolder;
     height: 50px;
@@ -71,7 +73,7 @@ body {
   justify-content: center;
 }
 
-#qImg {
+#questionImage {
   display: flex;
   justify-content: center;
   height: 100px;
@@ -109,6 +111,7 @@ body {
   cursor: pointer;
   word-break: break-all;
   padding: 5px;
+  margin: 5px;
 
   &:hover {
     border: 1px solid rgb(0, 0, 0);
@@ -169,4 +172,43 @@ body {
   width: 500px;
   height: 500px;
   background-color: red;
+}
+
+.final {
+  width: 100%;
+  height: 500px;
+  background-image: url(/src/img/logo.png);
+}
+
+.topic__menu {
+  width: 100%;
+  min-height: 400px;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 100px 0;
+}
+
+.topic {
+  font-size: 1.5rem;
+  font-weight: bolder;
+  height: 50px;
+  text-align: center;
+  cursor: pointer;
+  color: lightgrey;
+
+  &:hover {
+    color: rgb(78, 78, 78);
+  }
+}
+
+.fact {
+  width: 100%;
+  margin: 200px 0 0 0;
+  min-height: 400px;
+  background-color: rgb(255, 214, 214);
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
