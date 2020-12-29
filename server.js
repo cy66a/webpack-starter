@@ -19,12 +19,12 @@ let questions = [
   {
     id: 2,
     theme: 'HTML',
-    question: 'Что такое HTML?',
+    question: 'Организация, разрабатывающая и внедряющая технологические стандарты для Всемирной паутины?',
     imgSrc: '/src/img/html.png',
-    choiceA: 'Язык гипертекстовой разметки',
-    choiceB: 'Язык программирования',
-    choiceC: 'Каскадный язык стилей',
-    correct: 'A'
+    choiceA: 'WWW',
+    choiceB: 'WWE',
+    choiceC: 'W3C',
+    correct: 'C'
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ let questions = [
     imgSrc: '/src/img/css.png',
     choiceA: 'Язык гипертекстовой разметки',
     choiceB: 'Каскадный язык стилей',
-    choiceC: 'Язык програяммирования',
+    choiceC: 'Язык программирования',
     correct: 'B',
   },
   {
